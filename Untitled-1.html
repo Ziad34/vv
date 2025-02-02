@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: red;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #yes {
+            background-color: green;
+            color: white;
+            font-size: 20px;
+        }
+        #no {
+            background-color: red;
+            color: white;
+            font-size: 20px;
+        }
+        img {
+            width: 100px;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine?</h1>
+    <div class="buttons">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+    <img src=https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGo3am14dGszc3UweDFoOXBlYmF4dG53cDRmdDV1Y3cwMmduNmdtYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vDhDcIEmShbUI/giphy.gif alt="Cute cat" id="cat">
+
+    <script>
+        let noTexts = [
+            "Pookie, please...",
+            "Are you positive?",
+            "Are you really, really sure?",
+            "It will make me sad, really sad...",
+            "You're breaking my heart 💔"
+        ];
+        let noClickCount = 0;
+        let yesButton = document.getElementById("yes");
+        let noButton = document.getElementById("no");
+
+        noButton.addEventListener("click", function() {
+            if (noClickCount < noTexts.length) {
+                noButton.textContent = noTexts[noClickCount];
+                noClickCount++;
+            } 
+            if (yesButton.style.fontSize) {
+                yesButton.style.fontSize = `${parseInt(yesButton.style.fontSize) + 10}px`;
+            } else {
+                yesButton.style.fontSize = "30px";
+            }
+            noButton.style.fontSize = `${parseInt(noButton.style.fontSize) - 2}px`;
+            if (parseInt(noButton.style.fontSize) < 10) {
+                noButton.style.display = "none";
+            }
+        });
+
+        yesButton.addEventListener("click", function() {
+            document.body.innerHTML = `<h1>YAY! You made me so happy! ❤️</h1><img src=https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3J5bHY4M3h1MHBsazdjOTNwOWp6cnE1NWlib254MjJtc2N1MTZnbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XaikVL6qbrJSJoQmCR/giphy.gif alt="Happy cat">`;
+        });
+    </script>
+</body>
+</html>
